@@ -4,19 +4,19 @@ recognizer = sr.Recognizer()
 
 def get_voice_input():
     with sr.Microphone() as source:
-        print("Это ваш номер телефона?")
+        print("This is you phone number")
         audio = recognizer.listen(source)
 
     try:
         text = recognizer.recognize_google(audio, language="ru-RU")
-        print("Вы сказали:", text)
+        print("You say ", text)
 
         return text
     except sr.UnknownValueError:
-        print("Извините, не удалось распознать речь.")
+        print("Sorry, speech recognition was not possible")
         return ""
     except sr.RequestError as e:
-        print("Ошибка при запросе к сервису Google Speech Recognition:", e)
+        print("Error when requesting Google Speech Recognition service:", e)
         return ""
 
 

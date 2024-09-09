@@ -5,7 +5,7 @@ import random
 from playsound import playsound
 
 num = []
-path_num = "C:\\Users\\Admin\\Desktop\\python_IDEA\\project\\src\\alexa\\num\\"
+path_num = "path to nums"
 sounds_num = ['num1', 'num2', 'num3']
 
 
@@ -21,7 +21,7 @@ def listen_to_num():
         current_time = time.time()
 
         if current_time - start_time > timeout_seconds:
-            print("Время выполнения цикла превышено")
+            print("Time out")
             break
         time.sleep(1)
 
@@ -30,30 +30,27 @@ def listen_to_num():
 
             play_num = str(path_num) + str(random.choice(sounds_num)) + ".mp3"
             playsound(play_num)
-            print("Говорите номер телефона:")
+            print("Say phone number:")
             audio = recognizer.listen(source)
 
         # Распознаем речь с использованием Google Web Speech API
 
         try:
             text = recognizer.recognize_google(audio, language="ru-RU")
-            print("Вы сказали:", text)
+            print("You say ", text)
 
             # Поиск номера телефона с помощью регулярного выражения
             phone_number = re.search(
                 r'(\+?\d{1,2}\s*[-.\s]?)?(\(?\d{3}\)?\s*[-.\s]?)?(\d{3}\s*[-.\s]?\d{2,4})\s*[-.\s]?(\d{2,4})', text)
             if phone_number:
-                print("Найден номер телефона:", phone_number.group())
+                print("Phone number is found: ", phone_number.group())
                 num.append(phone_number.group())
                 print(num[0])
             else:
-                print("Номер телефона не найден.")
+                print("Phone number is not found")
 
         except sr.UnknownValueError:
-            print("Извините, не удалось распознать речь.")
+            print("Sorry, speech recognition was not possible.")
 
         except sr.RequestError as e:
-            print("Ошибка при запросе к сервису Google Speech Recognition:", e)
-
-
-    print("GHBDNTTTT")
+            print("Error when requesting Google Speech Recognition service:", e)

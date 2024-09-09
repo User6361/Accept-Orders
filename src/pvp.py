@@ -6,11 +6,11 @@ from vosk import Model, KaldiRecognizer
 from playsound import playsound
 
 
-path_by = "C:\\Users\\Admin\\Desktop\\python_IDEA\\project\\src\\alexa\\by\\"
-path_check = "C:\\Users\\Admin\\Desktop\\python_IDEA\\project\\src\\alexa\\check\\"
-path_more = "C:\\Users\\Admin\\Desktop\\python_IDEA\\project\\src\\alexa\\more\\"
-path_base = "C:\\Users\\Admin\\Desktop\\python_IDEA\\project\\src\\alexa\\base\\"
-path_er = "C:\\Users\\Admin\\Desktop\\python_IDEA\\project\\src\\alexa\\er\\"
+path_by = "Paths"
+path_check = "to"
+path_more = "mp3"
+path_base = "files"
+path_er = "!"
 
 sounds_by = ['by1', 'by2', 'by3', 'by4']
 sounds_check = ['check1', 'check2']
@@ -32,10 +32,10 @@ time_list = []
 
 def main():
     print("''''''''''''''''''''''''''''''")
-    print("ГОЛОСОВОЙ ПОМОЩНИК АЛЕКСА 1.2")
+    print("$!$!$!$!__Alexa_1.2__$!$!$!!$!")
     print("''''''''''''''''''''''''''''''")
 
-    playsound("C:\\Users\\Admin\\Desktop\\python_IDEA\\project\\src\\alexa\\hello\\hi1.mp3")
+    playsound("path to playsound file")
     time_list.clear()
 
     def listen():

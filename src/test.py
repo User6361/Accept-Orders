@@ -7,17 +7,17 @@ phone_numbers = []
 
 def add_phone_number(number):
     phone_numbers.append(number)
-    print("Номер телефона добавлен:", number)
+    print("Number is added", number)
 
 
 def listen_to_num():
     with sr.Microphone() as source:
-        print("Скажите номер телефона:")
+        print("Say current phone number")
         audio = recognizer.listen(source)
 
     try:
         text = recognizer.recognize_google(audio, language="ru-RU")
-        print("Вы сказали:", text)
+        print("You say ", text)
 
         import re
 
@@ -29,10 +29,10 @@ def listen_to_num():
             add_phone_number(phone_number)
 
         else:
-            print("Номер телефона не найден.")
+            print("NUmber is not found")
     except sr.UnknownValueError:
-        print("Извините, не удалось распознать речь.")
+        print("I dont understand audio")
     except sr.RequestError as e:
-        print("Ошибка при запросе к сервису Google Speech Recognition:", e)
+        print("Error when accessing the Google Speech Recognition service:", e)
 
-    print("Массив номеров телефонов:", phone_numbers)
+    print("Phones numbers ", phone_numbers)

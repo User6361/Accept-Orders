@@ -3,7 +3,7 @@ import time
 import random
 from playsound import playsound
 
-path_check = "C:\\Users\\Admin\\Desktop\\python_IDEA\\project\\src\\alexa\\check\\"
+path_check = "path to check"
 sounds_check = ['check1', 'check2']
 
 
@@ -18,7 +18,7 @@ def listen_to_check():
         current_time = time.time()
 
         if current_time - start_time > timeout_seconds:
-            print("Время выполнения цикла превышено")
+            print("Time out!")
             break
         time.sleep(1)
 
@@ -27,22 +27,22 @@ def listen_to_check():
             play_check = str(path_check) + str(random.choice(sounds_check)) + ".mp3"
             playsound(play_check)
 
-            print("Это ваш номер телефона?")
+            print("This is your phone number?")
             audio = recognizer.listen(source)
 
         try:
             text = recognizer.recognize_google(audio, language="ru-RU")
             if text == "да":
-                print("Я ВАС ПОНЯЛА!!!")
+                print("Ok")
                 break
             elif text == "нет":
-                print("ДИКТУЙТЕ ЕЩЕ РАЗ!!")
+                print("Say again")
                 break
             else:
-                print("Я ВАС НЕ ПОНЯЛА")
+                print("I don't understand you")
 
         except sr.UnknownValueError:
-            print("Извините, не удалось распознать речь.")
+            print("Sorry, speech recognition was not possible.")
 
         except sr.RequestError as e:
-            print("Ошибка при запросе к сервису Google Speech Recognition:", e)
+            print("Error when requesting Google Speech Recognition service:", e)

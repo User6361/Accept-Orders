@@ -9,10 +9,10 @@ audio_stream = None
 print("Listeting...")
 
 try:
-    access_key = "4JZPO8wujsl/3LKnOsNZdw5kADpI9QSqWoOioYoTwC/qfZUBba9hbQ=="
+    access_key = "porcupine key"
     porcupine = pvporcupine.create(
         access_key=access_key,
-        keyword_paths=['Alexa_en_windows_v3_0_0.ppn'])
+        keyword_paths=['Alexa_en_windows_v3_0_0.ppn']) #the wakeword porcupine file
 
     pa = pyaudio.PyAudio()
     audio_stream = pa.open(
